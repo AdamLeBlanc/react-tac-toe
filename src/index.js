@@ -47,7 +47,7 @@ class Board extends React.Component {
 class Game extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.initialState = {
       history: [{
         squares: Array(9).fill(null),
         move: null,
@@ -55,6 +55,7 @@ class Game extends React.Component {
       stepNumber: 0,
       xIsNext: true,
     };
+    this.state = { ...this.initialState }
   }
 
   handleClick(i) {
@@ -116,6 +117,7 @@ class Game extends React.Component {
         <div className="game-info">
           <div>{status}</div>
           <ol>{moves}</ol>
+          {winner ? <button onClick={() => this.setState({ ...this.initialState })}>New Game</button> : null}
         </div>
       </div>
     );
@@ -139,6 +141,7 @@ function calculateWinner(squares) {
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6],
+    [3, 4, 5],
   ];
 
   for (let i = 0; i < lines.length; i++) {
