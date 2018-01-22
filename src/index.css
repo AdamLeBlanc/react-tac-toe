@@ -84,3 +84,8 @@ li > button:hover {
   border-color: aqua;
   box-shadow: 2px 3px 7px 1px rgba(0,0,0,0.75);
 }
+
+.winner {
+  background: yellow;
+  color: red;
+}
